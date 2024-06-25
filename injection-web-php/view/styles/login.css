@@ -1,0 +1,14 @@
+.error-warning {
+  display: flex;
+  width: fit-content;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: #be2b2b;
+  margin-top: 2rem;
+}
+
+.error-warning p {
+  color: white;
+  margin: 0;
+  font-weight: bold;
+}
