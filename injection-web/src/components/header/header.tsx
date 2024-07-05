@@ -18,6 +18,7 @@ export default function Header() {
         height={0}
         alt="logo"
         src="/images/logos/logo.png"
+        priority
         className="h-[80px] w-fit object-contain drop-shadow"
       />
       <div className="flex justify-end items-center gap-8 2xl:gap-32">

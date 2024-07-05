@@ -12,8 +12,8 @@ export default function Navbar({ pathname }: NavbarProps) {
       url: '/',
     },
     {
-      text: 'Perfil',
-      url: '/perfil',
+      text: 'Membros',
+      url: '/membro',
     },
     {
       text: 'Sobre',

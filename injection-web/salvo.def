@@ -1,0 +1,26 @@
+<div
+  className={`embla__slide ${selectedSnap == index ? 'scale' : ''}`}
+  key={index}
+>
+  <div className="embla__slide__number">{index + 1}</div>
+</div>
+
+.embla__viewport {
+}
+.embla__container {
+  backface-visibility: hidden;
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+  margin-left: calc(var(--slide-spacing) * -1);
+}
+.embla__slide {
+  scale: 0.8;
+  flex: 0 0 var(--slide-size);
+  min-width: 0;
+  padding-left: var(--slide-spacing);
+  transition: 0.4s ease-in-out;
+}
+
+.embla__slide.scale {
+  scale: 1;
+}

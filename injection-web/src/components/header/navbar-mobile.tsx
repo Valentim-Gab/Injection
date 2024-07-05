@@ -1,102 +1,86 @@
 'use client'
 
-import Link from 'next/link'
-import React from 'react'
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from '@/components/ui/drawer'
+
+import React, { useState } from 'react'
 import './navbar-mobile.scss'
-import { tv } from 'tailwind-variants'
-import Image from 'next/image'
+import Link from 'next/link'
 
 interface NavbarProps {
   isOpen: boolean
   pathname: string
   setActive: React.Dispatch<React.SetStateAction<boolean>>
 }
-const navItemStyles = tv({
-  base: 'item flex items-center justify-center gap-2',
-  variants: {
-    active: {
-      true: 'px-2 py-1 mt-1 bg-white text-primary rounded',
-    },
-  },
-})
 
-export default function NavbarMobile({
-  isOpen,
-  setActive,
-  pathname,
-}: NavbarProps) {
+export default function NavbarMobile({ pathname }: NavbarProps) {
+  const [open, setOpen] = useState(false)
 
   const items = [
     {
-      icon: 'icon-[solar--home-bold]',
-      text: 'Início',
+      text: 'Home',
       url: '/',
     },
     {
-      icon: 'icon-[solar--bag-4-bold]',
-      text: 'Carrinho',
-      url: '/test',
+      text: 'Membros',
+      url: '/membro',
     },
     {
-      icon: 'icon-[solar--bag-4-bold]',
-      text: 'Cliente',
-      url: '/cliente',
-    },
-    {
-      icon: 'icon-[solar--hamburger-menu-bold]',
-      text: 'Categorias',
-      url: '/categories',
+      text: 'Sobre',
+      url: '/sobre',
     },
   ]
 
   return (
-    <nav
-      data-open={isOpen}
-      className={`navbar-mobile bg-primary text-white w-full`}
-    >
-      <ul className="items pb-2">
-        {items &&
-          items.map((item, index) => (
-            <li key={index} className="flex justify-between items-center gap-2">
-              <Link
-                href={item.url}
-                onClick={() => {
-                  setActive(false)
-                }}
-                data-active={pathname === item.url}
-                className="flex items-center self-stretch cursor-pointer p-4 w-full data-[active=true]:py-1"
-              >
-                <div
-                  data-active={pathname === item.url}
-                  className={navItemStyles({ active: pathname === item.url })}
+    <Drawer open={open}>
+      <DrawerTrigger
+        className="flex justify-center items-center"
+        onClick={() => setOpen(true)}
+      >
+        <span className="flex items-center justify-center">
+          <i className="burger-icon icon-[majesticons--menu] w-16 h-16"></i>
+        </span>
+      </DrawerTrigger>
+      <DrawerContent className="pb-8 border-0">
+        <DrawerClose
+          className="flex items-center justify-center w-fit h-fit p-3 absolute right-0 top-0"
+          onClick={() => setOpen(false)}
+        >
+          <i className="icon-[majesticons--close] text-2xl"></i>
+        </DrawerClose>
+        <DrawerHeader>
+          <h2 className="absolute left-3 top-3 text-left text-xs font-bold">Salve,<br />Valentim!</h2>
+          <DrawerTitle></DrawerTitle>
+          <DrawerDescription></DrawerDescription>
+        </DrawerHeader>
+        <nav>
+          <ul className="flex flex-col items-center justify-center gap-2">
+            {items &&
+              items.map((item, index) => (
+                <li
+                  key={index}
+                  className="flex items-center justify-center self-stretch"
                 >
-                  <i className={`${item.icon} text-lg`}></i>
-                  <p className="font-medium">{item.text}</p>
-                </div>
-              </Link>
-            </li>
-          ))}
-          <li className="flex justify-between items-center gap-2">
-            <Link
-              href={'/login'}
-              onClick={() => {
-                setActive(false)
-              }}
-              data-active={pathname === '/login'}
-              className="flex items-center self-stretch cursor-pointer p-4 w-full data-[active=true]:py-1"
-            >
-              <div
-                data-active={pathname === '/login'}
-                className={navItemStyles({
-                  active: pathname === '/login',
-                })}
-              >
-                <i className={`icon-[solar--login-3-bold] text-lg`}></i>
-                <p className="font-medium">Entrar</p>
-              </div>
-            </Link>
-          </li>
-      </ul>
-    </nav>
+                  <Link
+                    href={item.url}
+                    data-active={pathname === item.url}
+                    className="flex items-center justify-center cursor-pointer rounded data-[active=true]:text-primary p-2"
+                    onClick={() => setOpen(false)}
+                  >
+                    <p className="font-medium text-xl">{item.text}</p>
+                  </Link>
+                </li>
+              ))}
+          </ul>
+        </nav>
+      </DrawerContent>
+    </Drawer>
   )
 }
