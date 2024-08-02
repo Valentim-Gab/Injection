@@ -3,3 +3,7 @@
     text-shadow: 0 4px 8px #000;
   }
 }
+
+.main-container {
+  @apply min-h-screen py-16 lg:py-28;
+}

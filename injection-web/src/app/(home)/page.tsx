@@ -3,8 +3,8 @@ import CarouselGallery from '@/components/carousel-gallery/carousel-gallery'
 
 export default function Home() {
   return (
-    <main className="main min-h-screen py-8 sm:py-16 lg:grid lg:grid-cols-2 lg:items-center">
-      <section className="place-self-center grid grid-cols-1 gap-2 px-4 sm:px-8 lg:p-16">
+    <main className="main main-container pt-24 lg:grid lg:grid-cols-2 lg:items-center lg:pt-40">
+      <section className="place-self-center grid grid-cols-1 gap-2 p-4 sm:px-8 lg:p-16">
         <h1 className="break-words text-shadow-custom text-primary uppercase font-bold text-4xl sm:text-5xl lg:text-6xl 2xl:text-8xl">
           Gabriel Valentim
         </h1>

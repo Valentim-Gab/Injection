@@ -9,10 +9,9 @@ import Image from 'next/image'
 
 export default function Header() {
   const pathname = usePathname()
-  const [drawerOpen, setDrawerOpen] = useState(false)
 
   return (
-    <header className="justify-between items-center h-28 px-16 hidden lg:flex">
+    <header className="absolute w-full justify-between items-center h-28 px-16 hidden lg:flex">
       <Image
         width={0}
         height={0}
@@ -26,7 +25,7 @@ export default function Header() {
         <button className="flex items-center justify-center w-8 h-8 sm:w-12 sm:h-12 rounded-full">
           <i className="icon-[majesticons--search] w-10 h-10 text-white"></i>
         </button>
-        <h2 className="text-lg font-bold">Salve, Valentim!</h2>
+        <Link href={'/login'} className="text-lg font-bold">Salve, Valentim!</Link>
       </div>
     </header>
   )

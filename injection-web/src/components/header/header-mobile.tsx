@@ -15,7 +15,7 @@ export default function HeaderMobile() {
   }
 
   return (
-    <header className="header-mobile flex justify-between items-center self-stretch h-16 pl-2 text-white bg-transparent sticky sm:h-16 lg:hidden">
+    <header className="header-mobile flex justify-between items-center self-stretch h-16 pl-2 text-white bg-transparent absolute w-full sm:h-16 lg:hidden">
       <Image
         width={0}
         height={0}

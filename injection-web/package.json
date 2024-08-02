@@ -9,10 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
+    "@iconify-json/lets-icons": "^1.1.2",
     "@iconify-json/majesticons": "^1.1.11",
+    "@iconify-json/ph": "^1.1.13",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
+    "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-toast": "^1.2.1",
     "@types/tailwindcss": "^3.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -22,11 +27,13 @@
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
+    "react-hook-form": "^7.52.1",
     "sass": "^1.75.0",
     "tailwind-merge": "^2.3.0",
     "tailwind-variants": "^0.2.1",
     "tailwindcss-animate": "^1.0.7",
-    "vaul": "^0.9.1"
+    "vaul": "^0.9.1",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@iconify-json/lucide": "^1.1.194",

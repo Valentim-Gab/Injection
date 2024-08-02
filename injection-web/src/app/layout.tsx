@@ -3,6 +3,7 @@ import { Poppins } from 'next/font/google'
 import './globals.scss'
 import Header from '@/components/header/header'
 import HeaderMobile from '@/components/header/header-mobile'
+import { Toaster } from '@/components/ui/toaster'
 
 const poppins = Poppins({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -25,6 +26,7 @@ export default function RootLayout({
         <Header />
         <HeaderMobile />
         {children}
+        <Toaster />
       </body>
     </html>
   )

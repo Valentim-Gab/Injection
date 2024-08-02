@@ -29,8 +29,8 @@ export default function About() {
   }
 
   return (
-    <main className="main flex flex-col items-center gap-8 min-h-screen p-8 sm:p-16">
-      <h1 className="text-center break-words text-shadow-custom text-primary uppercase font-bold text-3xl sm:text-5xl lg:text-6xl 2xl:text-8xl">
+    <main className="main main-container flex flex-col items-center gap-8 pb-8 px-8 sm:px-16">
+      <h1 className="mt-8 text-center break-words text-shadow-custom text-primary uppercase font-bold text-3xl sm:text-5xl lg:text-6xl 2xl:text-8xl">
         {about.title}
       </h1>
       {about.description}
