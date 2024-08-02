@@ -17,7 +17,7 @@ const getAll = async () => {
 const get = async (id) => {
   try {
     const res = await client.query(
-      `SELECT * FROM USERS WHERE active = true AND priv = false AND id = ${id}`
+      `SELECT * FROM USERS WHERE active = true AND id = ${id}`
     )
 
     return res.rows[0]
@@ -43,14 +43,10 @@ const getSecure = async (id) => {
   }
 }
 
-// safasf' or '1' = '1' --
-// adm' UNION ALL SELECT senha as nome, idade FROM users --
 const search = async (input) => {
   try {
-    // console.log(`SELECT name, description FROM users WHERE active = true AND nome LIKE '%${input}%'`)
-
     const res = await client.query(
-      `SELECT name, description FROM users WHERE active = true AND priv = false AND name LIKE '%${input}%'`
+      `SELECT id, name, description FROM users WHERE active = true AND priv = false AND name LIKE '%${input}%'`
     )
 
     return res.rows
