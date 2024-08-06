@@ -57,7 +57,7 @@ export default function Members() {
       : description
   }
 
-  const filterMembers = (value: string) => {
+  const handleSearchMember = (value: string) => {
     setSearchValue(value)
 
     if (!members) {
@@ -115,7 +115,7 @@ export default function Members() {
               className="w-full h-full text-black text-sm bg-transparent outline-none placeholder:text-black/50 lg:text-base"
               placeholder="Buscar membro"
               onChange={(e) => {
-                filterMembers(e.target.value)
+                handleSearchMember(e.target.value)
               }}
             />
           </span>

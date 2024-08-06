@@ -2,10 +2,13 @@ import React from 'react'
 import CarouselGallery from '@/components/carousel-gallery/carousel-gallery'
 import { MemberService } from '@/services/member-service'
 import { redirect } from 'next/navigation'
+import { ImageService } from '@/services/image-service'
 
 export default async function Member({ params }: { params: { id: number } }) {
   const memberService = new MemberService()
+  const imageService = new ImageService()
   const member = await memberService.getById(params.id)
+  const imageList = await imageService.getAllByUserId(params.id)
 
   if (!member) {
     redirect('/login')
@@ -21,7 +24,7 @@ export default async function Member({ params }: { params: { id: number } }) {
           {member.description}
         </p>
       </section>
-      <CarouselGallery />
+      {imageList && <CarouselGallery allImageList={imageList} member={member} />}
     </main>
   )
 }

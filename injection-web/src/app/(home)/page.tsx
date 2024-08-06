@@ -1,7 +1,20 @@
 import React from 'react'
 import CarouselGallery from '@/components/carousel-gallery/carousel-gallery'
+import { LoginService } from '@/services/login-service'
+import { ImageService } from '@/services/image-service'
+import { redirect } from 'next/navigation'
 
-export default function Home() {
+export default async function Home() {
+  const loginService = new LoginService()
+  const imageService = new ImageService()
+  const member = await loginService.getLoggedUserMock()
+
+  if (!member) {
+    redirect('/login')
+  }
+
+  const imageList = await imageService.getAllByUserId(member.id)
+
   return (
     <main className="main main-container pt-24 lg:grid lg:grid-cols-2 lg:items-center lg:pt-40">
       <section className="place-self-center grid grid-cols-1 gap-2 p-4 sm:px-8 lg:p-16">
@@ -15,7 +28,7 @@ export default function Home() {
           ambiental como um compromisso vitalício.
         </p>
       </section>
-      <CarouselGallery />
+      {imageList && <CarouselGallery allImageList={imageList} member={member} />}
     </main>
   )
 }

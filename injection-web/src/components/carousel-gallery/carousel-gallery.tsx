@@ -9,72 +9,24 @@ import {
   SelectedSnapDisplay,
   useSelectedSnapDisplay,
 } from '../ui/carousel-main/carousel-main-selected-snap-display'
+import { ImageEntity } from '@/interfaces/image-entity'
+import { ImageService } from '@/services/image-service'
+import { Member } from '@/interfaces/member'
 
-export default function CarouselGallery() {
+export default function CarouselGallery({
+  allImageList,
+  member
+}: {
+  allImageList: ImageEntity[]
+  member: Member
+}) {
   const [searchOpen, setSearchOpen] = useState(false)
   const [searchValue, setSearchValue] = useState('')
+  const [imageList, setImageList] = useState(allImageList)
   const options: EmblaOptionsType | any = { dragFree: true }
   const [emblaRef, emblaApi] = useEmblaCarousel(options)
   const { selectedSnap, snapCount } = useSelectedSnapDisplay(emblaApi as any)
-
-  const imageList = [
-    {
-      src: '/images/usermock/2.jpg',
-      title: 'Only Me',
-    },
-    {
-      src: '/images/usermock/1.jpg',
-      title: 'Cachoeira grande',
-    },
-    {
-      src: '/images/usermock/3.jpg',
-      title: 'Paisagem',
-    },
-    {
-      src: '/images/usermock/1.jpg',
-      title: 'Paisagem',
-    },
-    {
-      src: '/images/usermock/3.jpg',
-      title: 'Paisagem',
-    },
-    {
-      src: '/images/usermock/2.jpg',
-      title: 'Paisagem',
-    },
-    {
-      src: '/images/usermock/1.jpg',
-      title: 'Paisagem',
-    },
-    {
-      src: '/images/usermock/3.jpg',
-      title: 'Paisagem',
-    },
-    {
-      src: '/images/usermock/2.jpg',
-      title: 'Paisagem',
-    },
-    {
-      src: '/images/usermock/1.jpg',
-      title: 'Paisagem',
-    },
-    {
-      src: '/images/usermock/3.jpg',
-      title: 'Paisagem',
-    },
-    {
-      src: '/images/usermock/2.jpg',
-      title: 'Paisagem',
-    },
-    {
-      src: '/images/usermock/3.jpg',
-      title: 'Paisagem',
-    },
-    {
-      src: '/images/usermock/1.jpg',
-      title: 'Paisagem',
-    },
-  ]
+  const imageService = new ImageService()
 
   const buttons = [
     {
@@ -92,11 +44,22 @@ export default function CarouselGallery() {
     else console.log('searching...')
   }
 
-  const changeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value
+  const handleSearchImage = (value: string) => {
     setSearchValue(value)
 
-    console.log(value)
+    if (!imageList) {
+      return
+    }
+
+    if (!value) {
+      setImageList(allImageList)
+
+      return
+    }
+
+    imageService.search(value, member.id).then((data) => {
+      setImageList(data ?? [])
+    })
   }
 
   return (
@@ -143,7 +106,9 @@ export default function CarouselGallery() {
             <input
               type="text"
               className="flex h-full w-full text-black text-sm bg-transparent outline-none placeholder:text-black/50 lg:text-base"
-              onChange={changeSearch}
+              onChange={(e) => {
+                handleSearchImage(e.target.value)
+              }}
               placeholder="Pesquise aqui"
             />
           </span>

@@ -1,10 +1,10 @@
-import React from 'react'
 import { UseEmblaCarouselType } from 'embla-carousel-react'
 import './carousel-main.scss'
+import { ImageEntity } from '@/interfaces/image-entity'
+import React from 'react'
 import Image from 'next/image'
-
 interface CarouselMainProps {
-  items: { src: string; title: string }[]
+  items: ImageEntity[]
   emblaRef: UseEmblaCarouselType[0]
   selectedSnap: number
 }
@@ -29,7 +29,7 @@ const CarouselMain: React.FC<CarouselMainProps> = (props) => {
                 width={0}
                 height={0}
                 alt={item.title}
-                src={item.src}
+                src={item.url_image}
                 className="aspect-[12/16] rounded w-full h-full "
               />
             </div>
