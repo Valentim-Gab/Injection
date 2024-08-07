@@ -42,7 +42,7 @@ public class UserDao {
     User user = null;
 
     try (Connection connection = new ConectaDBPostgres().getConexao()) {
-      this.sql = "SELECT * FROM USERS WHERE active = true AND priv = false AND id = " + id;
+      this.sql = "SELECT * FROM USERS WHERE active = true AND id = " + id;
       preparedStatement = connection.prepareStatement(this.sql);
       resultSet = preparedStatement.executeQuery();
 
@@ -67,13 +67,14 @@ public class UserDao {
     List<User> listUser = new ArrayList<>();
 
     try (Connection connection = new ConectaDBPostgres().getConexao()) {
-      this.sql = "SELECT name, description FROM users WHERE active = true AND priv = false AND name LIKE '%" + input
+      this.sql = "SELECT id, name, description FROM users WHERE active = true AND priv = false AND name LIKE '%" + input
           + "%'";
       preparedStatement = connection.prepareStatement(this.sql);
       resultSet = preparedStatement.executeQuery();
 
       while (resultSet.next()) {
         User user = new User();
+        user.setId(resultSet.getInt("id"));
         user.setName(resultSet.getString("name"));
         user.setDescription(resultSet.getString("description"));
 

@@ -1,9 +1,9 @@
 package Java_Api_Injection.model;
 
 public class Image {
-  private int idImage;
+  private int id_image;
   private String title;
-  private String urlImage;
+  private String url_image;
   private Boolean priv;
   private User user;
 
@@ -11,12 +11,12 @@ public class Image {
 
   }
 
-  public int getIdImage() {
-    return idImage;
+  public int getId_image() {
+    return id_image;
   }
 
-  public void setIdImage(int idImage) {
-    this.idImage = idImage;
+  public void setId_image(int idImage) {
+    this.id_image = idImage;
   }
 
   public String getTitle() {
@@ -27,12 +27,12 @@ public class Image {
     this.title = title;
   }
 
-  public String getUrlImage() {
-    return urlImage;
+  public String getUrl_image() {
+    return url_image;
   }
 
-  public void setUrlImage(String urlImage) {
-    this.urlImage = urlImage;
+  public void setUrl_image(String urlImage) {
+    this.url_image = urlImage;
   }
 
   public Boolean getPriv() {

@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-JavaApiInjectionApplication<Java_Api_Injection>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "Java_Api_Injection.JavaApiInjectionApplication",
+      "projectName": "Java_Api_Injection",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

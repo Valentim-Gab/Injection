@@ -22,9 +22,9 @@ public class ImageDao {
 
       while (resultSet.next()) {
         Image image = new Image();
-        image.setIdImage(resultSet.getInt("id_image"));
+        image.setId_image(resultSet.getInt("id_image"));
         image.setTitle(resultSet.getString("title"));
-        image.setUrlImage(resultSet.getString("url_image"));
+        image.setUrl_image(resultSet.getString("url_image"));
         image.setPriv(resultSet.getBoolean("priv"));
         image.setUser(userDao.get(resultSet.getInt("id_user")));
 
@@ -48,9 +48,9 @@ public class ImageDao {
 
       while (resultSet.next()) {
         Image image = new Image();
-        image.setIdImage(resultSet.getInt("id_image"));
+        image.setId_image(resultSet.getInt("id_image"));
         image.setTitle(resultSet.getString("title"));
-        image.setUrlImage(resultSet.getString("url_image"));
+        image.setUrl_image(resultSet.getString("url_image"));
         image.setPriv(resultSet.getBoolean("priv"));
         image.setUser(userDao.get(resultSet.getInt("id_user")));
 
@@ -73,10 +73,9 @@ public class ImageDao {
 
       while (resultSet.next()) {
         image = new Image();
-        image.setIdImage(resultSet.getInt("id_image"));
+        image.setId_image(resultSet.getInt("id_image"));
         image.setTitle(resultSet.getString("title"));
-        image.setUrlImage(resultSet.getString("url_image"));
-        ;
+        image.setUrl_image(resultSet.getString("url_image"));
         image.setPriv(resultSet.getBoolean("priv"));
         image.setUser(userDao.get(resultSet.getInt("id_user")));
       }
@@ -100,7 +99,7 @@ public class ImageDao {
       while (resultSet.next()) {
         Image image = new Image();
         image.setTitle(resultSet.getString("title"));
-        image.setUrlImage(resultSet.getString("url_image"));
+        image.setUrl_image(resultSet.getString("url_image"));
         image.setUser(userDao.get(resultSet.getInt("id_user")));
 
         listImage.add(image);
@@ -123,10 +122,9 @@ public class ImageDao {
 
       while (resultSet.next()) {
         image = new Image();
-        image.setIdImage(resultSet.getInt("id_image"));
+        image.setId_image(resultSet.getInt("id_image"));
         image.setTitle(resultSet.getString("title"));
-        image.setUrlImage(resultSet.getString("url_image"));
-        ;
+        image.setUrl_image(resultSet.getString("url_image"));
         image.setPriv(resultSet.getBoolean("priv"));
         image.setUser(userDao.get(resultSet.getInt("id_user")));
       }
@@ -150,7 +148,7 @@ public class ImageDao {
       while (resultSet.next()) {
         Image image = new Image();
         image.setTitle(resultSet.getString("title"));
-        image.setUrlImage(resultSet.getString("url_image"));
+        image.setUrl_image(resultSet.getString("url_image"));
         image.setUser(userDao.get(resultSet.getInt("id_user")));
 
         listImage.add(image);

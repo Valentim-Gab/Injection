@@ -19,8 +19,6 @@ public class ImageController {
 
   @GetMapping("user/{userId}")
   public List<Image> getAllByUser(@PathVariable int userId) {
-
-    System.out.println(userId);
     return imageService.getAllByUser(userId);
   }
 
@@ -31,8 +29,6 @@ public class ImageController {
 
   @GetMapping("search/{userId}")
   public List<Image> search(@PathVariable int userId, @RequestParam String input) {
-    System.out.println(input);
-
     return imageService.search(userId, input);
   }
 }

