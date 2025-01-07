@@ -1,5 +1,5 @@
 # Injection
-Project for the subject Mobile and Pervasive Computing Systems - Ubiquitous data
+Project for the Database Systems discipline - SQL Injection.
 
 ###
 
