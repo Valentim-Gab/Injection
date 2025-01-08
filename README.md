@@ -1,4 +1,4 @@
-# Injection
+# Inject
 Project for the Database Systems discipline - SQL Injection.
 
 ###
