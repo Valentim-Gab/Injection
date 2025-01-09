@@ -90,9 +90,9 @@ public class ImageDao {
     List<Image> listImage = new ArrayList<>();
 
     try (Connection connection = new ConectaDBPostgres().getConexao()) {
-      this.sql = "SELECT title, url_image, id_user FROM image WHERE priv = false AND id_user = " + userId
-          + " AND title LIKE '%" + input
-          + "%'";
+      this.sql = "SELECT title, url_image, id_user FROM image "
+          + "WHERE priv = false AND id_user = " + userId
+          + " AND title LIKE '%" + input + "%'";
       preparedStatement = connection.prepareStatement(this.sql);
       resultSet = preparedStatement.executeQuery();
 
@@ -139,7 +139,8 @@ public class ImageDao {
     List<Image> listImage = new ArrayList<>();
 
     try (Connection connection = new ConectaDBPostgres().getConexao()) {
-      this.sql = "SELECT title, url_image, id_user FROM image WHERE priv = false AND id_user = ? title LIKE ?";
+      this.sql = "SELECT title, url_image, id_user FROM image "
+          + "WHERE priv = false AND id_user = ? title LIKE ?";
       preparedStatement = connection.prepareStatement(this.sql);
       preparedStatement.setInt(1, userId);
       preparedStatement.setString(2, '%' + input + '%');
@@ -159,5 +160,4 @@ public class ImageDao {
 
     return listImage;
   }
-
 }

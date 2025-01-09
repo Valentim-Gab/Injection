@@ -46,7 +46,8 @@ const getSecure = async (id) => {
 const search = async (input) => {
   try {
     const res = await client.query(
-      `SELECT id, name, description FROM users WHERE active = true AND priv = false AND name LIKE '%${input}%'`
+      `SELECT id, name, description FROM users
+       WHERE active = true AND priv = false AND name LIKE '%${input}%'`
     )
 
     return res.rows
@@ -60,7 +61,7 @@ const search = async (input) => {
 const searchSecure = async (input) => {
   try {
     const res = await client.query(
-      `SELECT name, description FROM users WHERE active = true AND priv = false AND name LIKE $1`,
+      `SELECT id, name, description FROM users WHERE active = true AND priv = false AND name LIKE $1`,
       [`%${input}%`]
     )
 

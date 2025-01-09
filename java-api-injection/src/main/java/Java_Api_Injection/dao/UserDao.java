@@ -67,8 +67,8 @@ public class UserDao {
     List<User> listUser = new ArrayList<>();
 
     try (Connection connection = new ConectaDBPostgres().getConexao()) {
-      this.sql = "SELECT id, name, description FROM users WHERE active = true AND priv = false AND name LIKE '%" + input
-          + "%'";
+      this.sql = "SELECT id, name, description FROM users "
+          + "WHERE active = true AND priv = false AND name LIKE '%" + input + "%'";
       preparedStatement = connection.prepareStatement(this.sql);
       resultSet = preparedStatement.executeQuery();
 
@@ -117,13 +117,16 @@ public class UserDao {
     List<User> listUser = new ArrayList<>();
 
     try (Connection connection = new ConectaDBPostgres().getConexao()) {
-      this.sql = "SELECT name, description FROM users WHERE active = true AND priv = false AND name LIKE ?";
+      this.sql = "SELECT id, name, description FROM users "
+          + "WHERE active = true AND priv = false AND name LIKE ?";
+
       preparedStatement = connection.prepareStatement(this.sql);
       preparedStatement.setString(1, '%' + input + '%');
       resultSet = preparedStatement.executeQuery();
 
       while (resultSet.next()) {
         User user = new User();
+        user.setId(resultSet.getInt("id"));
         user.setName(resultSet.getString("name"));
         user.setDescription(resultSet.getString("description"));
 
@@ -140,8 +143,10 @@ public class UserDao {
     User user = null;
 
     try (Connection connection = new ConectaDBPostgres().getConexao()) {
-      this.sql = "SELECT * FROM users WHERE email = '" + userLogin.getEmail().toLowerCase() + "' AND password = '"
+      this.sql = "SELECT * FROM users WHERE email = '"
+          + userLogin.getEmail().toLowerCase() + "' AND password = '"
           + userLogin.getPassword() + "';";
+
       preparedStatement = connection.prepareStatement(this.sql);
       resultSet = preparedStatement.executeQuery();
 

@@ -56,10 +56,12 @@ const getSecure = async (id) => {
   }
 }
 
+// ImageModel.js
 const search = async (userId, input) => {
   try {
     const res = await client.query(
-      `SELECT title, url_image, id_user FROM image WHERE priv = false AND id_user = ${userId} AND title LIKE '%${input}%'`
+      `SELECT title, url_image, id_user FROM image 
+      WHERE priv = false AND id_user = ${userId} AND title LIKE '%${input}%'`
     )
 
     return res.rows
